@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Menampilkan Data dari API ke dalam DataTable menggunakan AJAX</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
+    />
+  </head>
+  <body>
+    <table id="data-table" class="display" style="width: 100%">
+      <thead>
+        <tr>
+          <th>Cateogry</th>
+          <th>Location type</th>
+          <th>ID</th>
+          <th>Month</th>
+        </tr>
+      </thead>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var dataTable = $("#data-table").DataTable({
+          ajax: {
+            url:
+              "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2023-01",
+            dataSrc: "",
+          },
+          columns: [
+            { data: "category" },
+            { data: "location_type" },
+            { data: "id" },
+            { data: "month" },
+          ],
+        });
+
+        });
+    </script>
+  </body>
+</html>
