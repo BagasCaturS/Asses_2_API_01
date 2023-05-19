@@ -38,7 +38,23 @@
             { data: "month" },
           ],
         });
+        $("form").on("submit", function (event) {
+          event.preventDefault();
 
+          var category = $("#category").val();
+          var locationType = $("#location_type").val();
+          var id = $("#id").val();
+          var dateMonth = $("#date_month").val();
+
+          if (category === "" || locationType === "" || id === "" || dateMonth === "") {
+            alert("Please fill in all fields");
+          } 
+          else {
+            dataTable.row.add([category, locationType, id, dateMonth]).draw(false);
+            $("form")[0].reset();
+            alert("New record submitted successfully");
+          }
+        });
         });
     </script>
     <form action="">
